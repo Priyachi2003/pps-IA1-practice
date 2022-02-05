@@ -1,9 +1,9 @@
 
- gcc -g p3original.c
+ gcc -g p3final.c
  ./a.out
-enter the values to add
+enter values to add
 4
-1+2+3+4 is 6 gdb a.out
+1+2+3+4 is 10 gdb a.out
 GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
 Copyright (C) 2018 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -20,20 +20,20 @@ For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from a.out...done.
 (gdb) b main
-Breakpoint 1 at 0x849: file p3original.c, line 31.
+Breakpoint 1 at 0x849: file p3final.c, line 31.
 (gdb) r
 Starting program: /home/runner/pps-IA1-practice-5/a.out 
 warning: Error disabling address space randomization: Operation not permitted
 
-Breakpoint 1, main () at p3original.c:31
+Breakpoint 1, main () at p3final.c:31
 31    n=input_n();
 (gdb) s
-input_n () at p3original.c:3
+input_n () at p3final.c:3
 3   {
 (gdb) n
-5     printf("enter the values to add\n");
+5     printf("enter values to add\n");
 (gdb) n
-enter the values to add
+enter values to add
 6     scanf("%d",&n);
 (gdb) n
 4
@@ -41,73 +41,78 @@ enter the values to add
 (gdb) n
 8   }
 (gdb) n
-main () at p3original.c:32
+main () at p3final.c:32
 32    sum=sum_n(n);
 (gdb) s
-sum_n (n=4) at p3original.c:12
+sum_n (n=4) at p3final.c:12
 12    sum=0;
 (gdb) n
-13    for(int i=1;i<n;i++)
+13    for(i=1;i<=n;i++)
 (gdb) n
 15      sum=sum+i;
 (gdb) p i
 $1 = 1
 (gdb) n
-13    for(int i=1;i<n;i++)
+13    for(i=1;i<=n;i++)
 (gdb) n
 15      sum=sum+i;
 (gdb) p i
 $2 = 2
 (gdb) n
-13    for(int i=1;i<n;i++)
+13    for(i=1;i<=n;i++)
 (gdb) n
 15      sum=sum+i;
 (gdb) p i
 $3 = 3
 (gdb) n
-13    for(int i=1;i<n;i++)
+13    for(i=1;i<=n;i++)
+(gdb) n
+15      sum=sum+i;
+(gdb) p i
+$4 = 4
+(gdb) n
+13    for(i=1;i<=n;i++)
 (gdb) n
 17    return sum;
 (gdb) n
 18  }
 (gdb) n
-main () at p3original.c:33
+main () at p3final.c:33
 33    output(n,sum);
 (gdb) s
-output (n=4, sum=6) at p3original.c:22
-22     for(int i=1;i<n;i++)
+output (n=4, sum=10) at p3final.c:22
+22    for(i=1;i<n;i++)
 (gdb) n
-24       printf("%d+",i);
+24  printf("%d+",i);
 (gdb) n
-22     for(int i=1;i<n;i++)
-(gdb) p sum
-$4 = 6
+22    for(i=1;i<n;i++)
 (gdb) n
-24       printf("%d+",i);
-(gdb) n
-22     for(int i=1;i<n;i++)
-(gdb) n
-24       printf("%d+",i);
-(gdb) n
-22     for(int i=1;i<n;i++)
+24  printf("%d+",i);
 (gdb) p i
-$5 = 3
+$5 = 2
 (gdb) n
-26     printf("%d is %d",i,sum);
+22    for(i=1;i<n;i++)
+(gdb) n
+24  printf("%d+",i);
+(gdb) n
+22    for(i=1;i<n;i++)
+(gdb) n
+26  printf("%d is %d",i ,sum);
+(gdb) p i
+$6 = 4
 (gdb) n
 27  }
+(gdb) n
+main () at p3final.c:34
+34  }
 (gdb) p sum
-$6 = 6
+$7 = 10
 (gdb) n
-main () at p3original.c:34
-34    return sum;
-(gdb) n
-36  }(gdb) n
-__libc_start_main (main=0x560d64c00841 <main>, argc=1, argv=0x7fff9b391e18, 
+__libc_start_main (main=0x561c23400841 <main>, argc=1, argv=0x7ffc9bcc52b8, 
     init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
-    stack_end=0x7fff9b391e08) at ../csu/libc-start.c:344
+    stack_end=0x7ffc9bcc52a8) at ../csu/libc-start.c:344
 344 ../csu/libc-start.c: No such file or directory.
 (gdb) c
 Continuing.
-1+2+3+4 is 6[Inferior 1 (process 126) exited with code 06]
+1+2+3+4 is 10[Inferior 1 (process 153) exited normally]
 (gdb) 
