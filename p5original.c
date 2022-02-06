@@ -8,15 +8,15 @@ float input()
 }
 float my_sqrt(float n)
 {
-  float a,sqrt;
-  a=n/2;
-  float a2=n;
-  while(a2!=n)
+  float temp,sqrt;
+  sqrt=n/2;
+  temp=0;
+  while(sqrt!=temp)
   {
-    a2=n;
-    a=a+(n/a)/2;
+  temp=sqrt;
+  sqrt=(n/temp+temp)/2;
   }
-  return a;
+  return temp;
 }
 void output(float n,float sqrt_result)
 {
