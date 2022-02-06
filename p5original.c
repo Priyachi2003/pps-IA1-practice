@@ -14,7 +14,7 @@ float my_sqrt(float n)
   while(a2!=n)
   {
     a2=n;
-    a=a+2/n;
+    a=a+(n/a)/2;
   }
   return a;
 }
